@@ -7,5 +7,10 @@ export function useRoutes(app: Application) {
 
   apiRouter.use('/users', userRouter);
 
+  apiRouter.use('/', (req, res) => {
+    res.status(200).json({
+      success: 'dsfsa',
+    });
+  });
   app.use('/', apiRouter);
 }
