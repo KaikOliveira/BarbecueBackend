@@ -5,6 +5,7 @@ const bd = new sqlite3.Database('data.db');
 const USER_SCHEMA = `
   CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user TEXT NOT NULL,
     name TEXT NOT NULL,
     email TEXT NOT NULL,
     password TEXT NOT NULL,
@@ -15,10 +16,11 @@ const USER_SCHEMA = `
 const INSERIR_CLIENTE_1 = `
 INSERT INTO users (
   name,
+  user,
   email,
   password,
   cpf
-) SELECT 'kaik', 'asdfas@dsfas.com', 'KaikOliveira', '2353425423' WHERE NOT EXISTS (SELECT * FROM users WHERE name = 'kaik')
+) SELECT 'kaik', 'kaik', 'asdfas@dsfas.com', 'KaikOliveira', '2353425423' WHERE NOT EXISTS (SELECT * FROM users WHERE name = 'kaik')
 `;
 
 

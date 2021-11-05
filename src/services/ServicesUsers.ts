@@ -1,4 +1,10 @@
-
+interface CreateUser {
+  name: string;
+  user: string;
+  email: string;
+  password: string;
+  cpf: number;
+}
 class ServicesUsers {
   _db: any;
   constructor(db: any) {
@@ -16,6 +22,34 @@ class ServicesUsers {
         },
       )
     })
+  }
+
+  create(data: CreateUser) {
+    return new Promise<any>((resolve, reject) => {
+      this._db.run(`
+        INSERT INTO users (
+          name,
+          user,
+          email,
+          password,
+          cpf,
+        ) values (?,?,?,?,?)
+      `, [
+        data.name,
+        data.user,
+        data.email,
+        data.password,
+        data.cpf
+      ], (err) => {
+        if (err) {
+          console.log(err);
+
+          return reject('Não foi possivel criar um novo usuario');
+        }
+
+        resolve(1);
+      });
+    });
   }
 }
 
