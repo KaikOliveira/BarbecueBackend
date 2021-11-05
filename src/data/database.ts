@@ -3,7 +3,7 @@ import sqlite3 from 'sqlite3';
 const bd = new sqlite3.Database('data.db');
 
 const USER_SCHEMA = `
-  CREATE TABLE users (
+  CREATE TABLE IF NOT EXISTS users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT NOT NULL,
     email TEXT NOT NULL,
@@ -18,7 +18,7 @@ INSERT INTO users (
   email,
   password,
   cpf
-) SELECT 'kaik', 'asdfas@dsfas.com', 'KaikOliveira', '2353425423'
+) SELECT 'kaik', 'asdfas@dsfas.com', 'KaikOliveira', '2353425423' WHERE NOT EXISTS (SELECT * FROM users WHERE name = 'kaik')
 `;
 
 
