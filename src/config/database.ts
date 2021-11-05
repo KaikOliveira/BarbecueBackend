@@ -1,18 +1,18 @@
-import sqlite3  from "sqlite3";
+import sqlite3 from 'sqlite3';
 
 const DATABASE_FILE = './data.db';
 
 if (!DATABASE_FILE) {
-  throw new Error ('Database nao informado!')
+  throw new Error('Database nao informado!');
 }
 
 export const openConnection = () => {
-  let db = new sqlite3.Database(DATABASE_FILE);
-  return db
-}
+  const db = new sqlite3.Database(DATABASE_FILE);
+  return db;
+};
 
 export const dbQuery = (query: string, params?: any[]) => {
-  let db = openConnection();
+  const db = openConnection();
 
   return new Promise<any[]>((resolve, reject) => {
     db.all(query, params, (err, rows) => {
@@ -21,9 +21,8 @@ export const dbQuery = (query: string, params?: any[]) => {
       } else {
         resolve(rows);
       }
-    })
-  })
-  .finally(() => {
+    });
+  }).finally(() => {
     db.close();
-  })
-}
+  });
+};

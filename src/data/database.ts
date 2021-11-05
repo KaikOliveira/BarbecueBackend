@@ -23,11 +23,10 @@ INSERT INTO users (
 ) SELECT 'kaik', 'kaik', 'asdfas@dsfas.com', 'KaikOliveira', '2353425423' WHERE NOT EXISTS (SELECT * FROM users WHERE name = 'kaik')
 `;
 
-
 bd.serialize(() => {
   bd.run('PRAGMA foreign_keys=ON');
-  bd.run(USER_SCHEMA)
-  bd.run(INSERIR_CLIENTE_1)
+  bd.run(USER_SCHEMA);
+  bd.run(INSERIR_CLIENTE_1);
 
   bd.each('SELECT * FROM users', (err, client) => {
     console.log('users: ');
@@ -35,9 +34,11 @@ bd.serialize(() => {
   });
 });
 
-process.on('SIGINT', () => bd.close(() => {
-  console.log('BD encerrado!');
-  process.exit(0);
-}));
+process.on('SIGINT', () =>
+  bd.close(() => {
+    console.log('BD encerrado!');
+    process.exit(0);
+  }),
+);
 
 export default bd;

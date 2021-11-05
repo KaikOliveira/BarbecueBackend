@@ -1,4 +1,5 @@
-interface CreateUser {
+/* eslint-disable prefer-promise-reject-errors */
+interface ICreateUser {
   name: string;
   user: string;
   email: string;
@@ -13,21 +14,21 @@ class ServicesUsers {
 
   listar() {
     return new Promise((resolve, reject) => {
-      this._db.all(
-        'SELECT * FROM users',
-        (erro, resultados) => {
-          if (erro) { return reject('Não foi possivel listar os clients!'); }
+      this._db.all('SELECT * FROM users', (erro, resultados) => {
+        if (erro) {
+          return reject('Não foi possivel listar os clients!');
+        }
 
-          return resolve(resultados);
-        },
-      )
-    })
+        return resolve(resultados);
+      });
+    });
   }
 
-  create(data: CreateUser) {
+  create(data: ICreateUser) {
     console.log(data);
     return new Promise<void>((resolve, reject) => {
-      this._db.run(`
+      this._db.run(
+        `
         INSERT INTO users (
           name,
           user,
@@ -35,21 +36,18 @@ class ServicesUsers {
           password,
           cpf,
         ) values (?,?,?,?,?)
-      `, [
-        data.name,
-        data.user,
-        data.email,
-        data.password,
-        data.cpf,
-      ], (err, client) => {
-        if (err) {
-          console.log(err.message);
+      `,
+        [data.name, data.user, data.email, data.password, data.cpf],
+        (err, client) => {
+          if (err) {
+            console.log(err.message);
 
-          return reject('Não foi possivel criar um novo usuario');
-        }
+            return reject('Não foi possivel criar um novo usuario');
+          }
 
-        resolve(client);
-      });
+          resolve(client);
+        },
+      );
     });
   }
 }
