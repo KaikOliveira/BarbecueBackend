@@ -25,7 +25,8 @@ class ServicesUsers {
   }
 
   create(data: CreateUser) {
-    return new Promise<any>((resolve, reject) => {
+    console.log(data);
+    return new Promise<void>((resolve, reject) => {
       this._db.run(`
         INSERT INTO users (
           name,
@@ -39,15 +40,15 @@ class ServicesUsers {
         data.user,
         data.email,
         data.password,
-        data.cpf
-      ], (err) => {
+        data.cpf,
+      ], (err, client) => {
         if (err) {
-          console.log(err);
+          console.log(err.message);
 
           return reject('Não foi possivel criar um novo usuario');
         }
 
-        resolve(1);
+        resolve(client);
       });
     });
   }

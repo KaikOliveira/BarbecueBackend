@@ -11,4 +11,17 @@ router.get('/list', (req, res) => {
     .then((rsp) => res.json(rsp));
 })
 
+router.post('/user', (req, res) => {
+  const service = new ServicesUsers(db);
+
+  console.log(req.body);
+  service.create(req.body)
+    .then(() => res.status(201).send("sucesso"))
+    .catch((err) => {
+      res.status(400).send(err);
+      console.log(err);
+    })
+
+})
+
 export default router;
