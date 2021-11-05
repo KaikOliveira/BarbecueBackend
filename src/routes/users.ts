@@ -1,27 +1,9 @@
-import express from 'express';
+import { Router } from 'express';
 
-import db from '../data/database';
-import ServicesUsers from '../services/ServicesUsers';
+import { userController } from '../controllers/users';
 
-const router = express.Router();
+const userRouter = Router();
 
-router.get('/list', (req, res) => {
-  const service = new ServicesUsers(db);
+userRouter.post('/', userController.createNewUser);
 
-  service.listar().then(rsp => res.json(rsp));
-});
-
-router.post('/user', (req, res) => {
-  const service = new ServicesUsers(db);
-
-  console.log(req.body);
-  service
-    .create(req.body)
-    .then(() => res.status(201).send('sucesso'))
-    .catch(err => {
-      res.status(400).send(err);
-      console.log(err);
-    });
-});
-
-export default router;
+export { userRouter };

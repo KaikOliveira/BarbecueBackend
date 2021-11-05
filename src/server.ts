@@ -1,13 +1,13 @@
 import express from 'express';
 
-import router from './routes/users';
+import { useRoutes } from './routes';
 
 const app = express();
 const port = 3333;
 
 app.use(express.json());
 
-app.use(router);
+useRoutes(app);
 
 app.listen(port, () => {
   console.log(`🚩 Server started on port ${port} !`);
