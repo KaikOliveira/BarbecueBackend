@@ -9,6 +9,12 @@ app.use(express.json());
 
 useRoutes(app);
 
+app.get('/', (req, res) => {
+  res.status(200).json({
+    suscce: true,
+  });
+});
+
 app.listen(port, () => {
   console.log(`🚩 Server started on port ${port} !`);
 });
