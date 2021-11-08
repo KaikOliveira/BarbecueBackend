@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 
 import { CreateUserService } from '../services/CreateUserService';
+import { IUser } from '../types/UserDTO';
 import { badRequest } from '../utils/erros';
 
 async function createNewUser(req: Request, res: Response) {
@@ -9,7 +10,9 @@ async function createNewUser(req: Request, res: Response) {
 
     const createUser = new CreateUserService();
 
-    const rsp = await createUser.execute(data, res);
+    const rsp: IUser = await createUser.execute(data, res);
+
+    delete rsp.password;
 
     return res.json(rsp);
   } catch (err) {

@@ -1,7 +1,8 @@
+import { hash } from 'bcryptjs';
 import { Response } from 'express';
 
-import { userModel } from '../models/user';
-import { IUser } from '../types/user';
+import { userModel } from '../models/UserModel';
+import { IUser } from '../types/UserDTO';
 import { badRequest } from '../utils/erros';
 
 class CreateUserService {
@@ -13,7 +14,15 @@ class CreateUserService {
       return badRequest(res, err);
     }
 
-    const user = await userModel.insertUser(data);
+    const hasedPassword = await hash(data.password, 8);
+
+    const dataUser: IUser = {
+      user: data.user,
+      name: data.name,
+      password: hasedPassword,
+    };
+
+    const user = await userModel.insertUser(dataUser);
 
     return user;
   }

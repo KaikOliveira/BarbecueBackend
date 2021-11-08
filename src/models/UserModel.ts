@@ -1,15 +1,14 @@
 import { dbQuery } from '../config/database';
-import { IUser } from '../types/user';
+import { IUser } from '../types/UserDTO';
 
 const insertUser = async (user: IUser) => {
-  await dbQuery(
-    `INSERT INTO users (user, name, email, password, cpf) values(?,?,?,?,?)`,
-    [user.user, user.name, user.email, user.password, user.cpf],
-  );
+  await dbQuery(`INSERT INTO users (user, name, password) values(?,?,?)`, [
+    user.user,
+    user.name,
+    user.password,
+  ]);
 
   const rsp = await dbQuery(`SELECT * from users WHERE user = ?`, [user.user]);
-
-  console.log(rsp);
 
   return rsp[0];
 };
