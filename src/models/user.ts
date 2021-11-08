@@ -14,6 +14,13 @@ const insertUser = async (user: IUser) => {
   return rsp[0];
 };
 
+const checkUserExists = async (user: string) => {
+  const check = await dbQuery(`SELECT * from users WHERE user = ?`, [user]);
+
+  return check;
+};
+
 export const userModel = {
   insertUser,
+  checkUserExists,
 };

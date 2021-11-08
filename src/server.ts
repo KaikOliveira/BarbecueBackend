@@ -4,7 +4,7 @@ import express from 'express';
 import { useRoutes } from './routes';
 
 const app = express();
-const port = 3333;
+const PORT = 3333;
 
 app.use(cors());
 
@@ -18,6 +18,6 @@ app.get('/', (req, res) => {
   });
 });
 
-app.listen(port, () => {
-  console.log(`🚩 Server started on port ${port} !`);
+app.listen(PORT, () => {
+  console.log(`🚩 Server started on port ${PORT} !`);
 });
