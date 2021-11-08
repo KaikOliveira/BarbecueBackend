@@ -11,3 +11,9 @@ export function internalServerError(res: Response, err: Error) {
     err: err.message,
   });
 }
+
+export function unauthorized(res: Response, err: string) {
+  res.status(401).json({
+    err,
+  });
+}

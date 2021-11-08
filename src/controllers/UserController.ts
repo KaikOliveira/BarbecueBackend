@@ -10,7 +10,7 @@ async function createNewUser(req: Request, res: Response) {
 
     const createUser = new CreateUserService();
 
-    const rsp: IUser = await createUser.execute(data, res);
+    const rsp: IUser = await createUser.create(data, res);
 
     delete rsp.password;
 
