@@ -13,14 +13,14 @@ async function signIn(req: Request, res: Response) {
 
     return res.json(rsp);
   } catch (err) {
-    return badRequest(res, err.message);
+    return badRequest(res, err);
   }
 }
 
 async function putUser(req: Request, res: Response) {
-  return res.json({ message: true })
+  return res.json({ message: true });
 }
 export const sessionsController = {
   signIn,
-  putUser
+  putUser,
 };

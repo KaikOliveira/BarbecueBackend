@@ -10,11 +10,10 @@ class CreateUserService {
     const checkUserExists = await userModel.checkUserExists(data.user);
 
     if (checkUserExists) {
-      const err = 'Usuario ja existe.';
-      return badRequest(res, err);
+      throw new Error('Usuario ja existe.');
     }
 
-    const hasedPassword = await hash(data.password, 8);
+    const hasedPassword = await hash(String(data.password), 8);
 
     const dataUser: IUser = {
       user: data.user,

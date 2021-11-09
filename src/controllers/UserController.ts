@@ -16,7 +16,9 @@ async function createNewUser(req: Request, res: Response) {
 
     return res.json(rsp);
   } catch (err) {
-    return badRequest(res, err.message);
+    console.log(err);
+
+    return badRequest(res, err);
   }
 }
 
