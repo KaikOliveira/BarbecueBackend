@@ -1,3 +1,5 @@
+import 'dotenv/config';
+
 import cors from 'cors';
 import express from 'express';
 
@@ -5,7 +7,7 @@ import { scheduleModel } from './models/ScheduleModal';
 import { useRoutes } from './routes';
 
 const app = express();
-const PORT = 3333;
+const PORT = process.env.MY_PORT || 3333;
 
 app.use(cors());
 
