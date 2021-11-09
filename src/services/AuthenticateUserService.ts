@@ -20,7 +20,10 @@ class AuthenticateUserService {
       return unauthorized(res, err);
     }
 
-    const matchPassword = await compare(data.password, checkUserExists.password);
+    const matchPassword = await compare(
+      data.password,
+      checkUserExists.password,
+    );
 
     if (!matchPassword) {
       const err = 'Incorreto user/senha.';
@@ -35,6 +38,7 @@ class AuthenticateUserService {
     });
 
     const response = {
+      id: checkUserExists.id,
       user: checkUserExists.user,
       token,
     };
