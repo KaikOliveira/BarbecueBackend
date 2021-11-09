@@ -7,7 +7,7 @@ import { scheduleModel } from './models/ScheduleModal';
 import { useRoutes } from './routes';
 
 const app = express();
-const PORT = process.env.MY_PORT || 3333;
+const PORT = Number(process.env.MY_PORT) || 3333;
 
 app.use(cors());
 
@@ -21,7 +21,7 @@ app.get('/', async (req, res) => {
   res.json(rsp);
 });
 
-app.listen(PORT, () => {
+app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚩 Server started on port ${PORT} !`);
 });
 
