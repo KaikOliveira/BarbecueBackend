@@ -9,7 +9,7 @@ class CreateUserService {
   public async create(data: IUser, res: Response): Promise<IUser | any> {
     const checkUserExists = await userModel.checkUserExists(data.user);
 
-    if (checkUserExists[0]) {
+    if (checkUserExists) {
       const err = 'Usuario ja existe.';
       return badRequest(res, err);
     }

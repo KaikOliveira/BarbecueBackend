@@ -16,6 +16,11 @@ async function signIn(req: Request, res: Response) {
     return badRequest(res, err.message);
   }
 }
+
+async function putUser(req: Request, res: Response) {
+  return res.json({ message: true })
+}
 export const sessionsController = {
   signIn,
+  putUser
 };

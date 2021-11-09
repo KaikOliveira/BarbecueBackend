@@ -15,29 +15,27 @@ class AuthenticateUserService {
   public async auth(data: ISignIn, res: Response) {
     const checkUserExists = await userModel.checkUserExists(data.user);
 
-    const dataUser = checkUserExists[0];
-
-    if (!dataUser) {
-      const err = 'Incorreto email/senha.';
+    if (!checkUserExists) {
+      const err = 'Incorreto user/senha.';
       return unauthorized(res, err);
     }
 
-    const matchPassword = await compare(data.password, dataUser.password);
+    const matchPassword = await compare(data.password, checkUserExists.password);
 
     if (!matchPassword) {
-      const err = 'Incorreto email/senha.';
+      const err = 'Incorreto user/senha.';
       return unauthorized(res, err);
     }
 
     const { secret, expiresIn } = authConfig.jwt;
 
     const token = sign({}, secret, {
-      subject: String(dataUser.id),
+      subject: String(checkUserExists.id),
       expiresIn,
     });
 
     const response = {
-      user: dataUser.user,
+      user: checkUserExists.user,
       token,
     };
 
