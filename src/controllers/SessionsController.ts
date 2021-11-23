@@ -2,17 +2,19 @@ import { Request, Response } from 'express';
 
 import { AuthenticateUserService } from '../services/AuthenticateUserService';
 import { badRequest } from '../utils/erros';
+import { validateSingIn } from '../Validation/AuthenticateSingnInValidation';
 
 async function signIn(req: Request, res: Response) {
   try {
     const data = req.body;
-
+    await validateSingIn(data);
     const authenticateUser = new AuthenticateUserService();
 
     const rsp = await authenticateUser.auth(data, res);
 
     return res.json(rsp);
   } catch (err) {
+    console.log(err);
     return badRequest(res, err);
   }
 }
