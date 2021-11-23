@@ -16,7 +16,7 @@ app.use(express.json());
 useRoutes(app);
 
 app.get('/', async (req, res) => {
-  const rsp = await scheduleModel.createNewSchedule();
+  const rsp = await scheduleModel.createNewSchedule(1);
 
   res.json(rsp);
 });
@@ -24,5 +24,3 @@ app.get('/', async (req, res) => {
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`🚩 Server started on port ${PORT} !`);
 });
-
-// app.listen();

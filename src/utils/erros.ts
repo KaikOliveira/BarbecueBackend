@@ -1,8 +1,8 @@
 import { Response } from 'express';
 
-export function badRequest(res: Response, err: Error) {
+export function badRequest(res: Response, err: string | unknown) {
   res.status(400).json({
-    err: err.message
+    err,
   });
 }
 

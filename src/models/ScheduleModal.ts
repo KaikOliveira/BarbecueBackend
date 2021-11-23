@@ -4,8 +4,11 @@ import { dbQuery } from '../config/database';
 //   await dbQuery(``)
 // }
 
-const createNewSchedule = async () => {
-  const listAll = await dbQuery(`SELECT * from schedules WHERE participants`);
+const createNewSchedule = async (id: number) => {
+  const listAll = await dbQuery(
+    `SELECT * from participants WHERE id_schedule = ?`,
+    [id],
+  );
 
   return listAll;
 };

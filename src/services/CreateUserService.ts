@@ -1,12 +1,10 @@
 import { hash } from 'bcryptjs';
-import { Response } from 'express';
 
 import { userModel } from '../models/UserModel';
 import { IUser } from '../types/UserDTO';
-import { badRequest } from '../utils/erros';
 
 class CreateUserService {
-  public async create(data: IUser, res: Response): Promise<IUser | any> {
+  public async create(data: IUser): Promise<IUser | any> {
     const checkUserExists = await userModel.checkUserExists(data.user);
 
     if (checkUserExists) {

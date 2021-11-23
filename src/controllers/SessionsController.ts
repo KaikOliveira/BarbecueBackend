@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 
 import { AuthenticateUserService } from '../services/AuthenticateUserService';
 import { badRequest } from '../utils/erros';
-import { validateSingIn } from '../Validation/AuthenticateSingnInValidation';
+import { validateSingIn } from '../Validation/AuthenticateValidation';
 
 async function signIn(req: Request, res: Response) {
   try {
@@ -22,6 +22,7 @@ async function signIn(req: Request, res: Response) {
 async function putUser(req: Request, res: Response) {
   return res.json({ message: true });
 }
+
 export const sessionsController = {
   signIn,
   putUser,
