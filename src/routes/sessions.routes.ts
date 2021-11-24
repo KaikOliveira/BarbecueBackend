@@ -1,8 +1,8 @@
 import { Router } from 'express';
 
 import { sessionsController } from '../controllers/SessionsController';
-import { validationSession } from '../middlewares/sessionsMiddlewares';
-import { sessionSchema } from '../Validation/usersSchema';
+import { validationSession } from '../middlewares/userMiddlewares';
+import { sessionSchema } from '../Validation/userSchema';
 
 const sessionsRouter = Router();
 

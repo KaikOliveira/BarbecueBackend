@@ -16,4 +16,17 @@ const validationSession =
     }
   };
 
-export { validationSession };
+const validationCreateUsers =
+  (schema: yup.ObjectSchema<any>) =>
+  async (req: Request, res: Response, next: NextFunction) => {
+    const data = req.body;
+
+    try {
+      await schema.validate(data);
+      next();
+    } catch (err) {
+      return badRequest(res, err);
+    }
+  };
+
+export { validationSession, validationCreateUsers };
