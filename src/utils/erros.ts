@@ -1,9 +1,7 @@
 import { Response } from 'express';
 
-export function badRequest(res: Response, err: string | unknown) {
-  res.status(400).json({
-    err,
-  });
+export function badRequest(res: Response, err: any) {
+  res.status(400).json({ Error: err.message });
 }
 
 export function internalServerError(res: Response, err: Error) {
