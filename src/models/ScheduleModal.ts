@@ -4,7 +4,7 @@ import { dbQuery } from '../config/database';
 //   await dbQuery(``)
 // }
 
-const createNewSchedule = async (id: number) => {
+const listParticipantsOfSchedule = async (id: number) => {
   const listAll = await dbQuery(
     `SELECT * from participants WHERE id_schedule = ?`,
     [id],
@@ -14,5 +14,5 @@ const createNewSchedule = async (id: number) => {
 };
 
 export const scheduleModel = {
-  createNewSchedule,
+  listParticipantsOfSchedule,
 };

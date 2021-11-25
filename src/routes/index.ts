@@ -1,6 +1,7 @@
 import { Application, Router } from 'express';
 
 import { scheduleModel } from '../models/ScheduleModal';
+import { scheduleRouter } from './schedules.routes';
 import { sessionsRouter } from './sessions.routes';
 import { userRouter } from './users.routes';
 
@@ -11,8 +12,10 @@ export function useRoutes(app: Application) {
 
   apiRouter.use('/sessions', sessionsRouter);
 
+  apiRouter.use('/schedules', scheduleRouter);
+
   apiRouter.get('/', async (req, res) => {
-    const rsp = await scheduleModel.createNewSchedule(1);
+    const rsp = await scheduleModel.listParticipantsOfSchedule(1);
     res.json(rsp);
   });
 
