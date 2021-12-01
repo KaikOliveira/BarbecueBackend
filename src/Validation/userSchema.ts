@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-const SessionSchema = yup.object().shape({
+const sessionSchema = yup.object().shape({
   user: yup
     .string()
     .required('Usuário é Obrigatorio!')
@@ -26,4 +26,4 @@ const createUserSchema = yup.object().shape({
     .required('Senha Obrigatório'),
 });
 
-export { SessionSchema, createUserSchema };
+export { sessionSchema, createUserSchema };

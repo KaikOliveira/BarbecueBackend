@@ -2,10 +2,10 @@
 import { Request, Response, NextFunction } from 'express';
 
 import { badRequest } from '../utils/erros';
-import { SessionSchema, createUserSchema } from '../validation/userSchema';
+import { sessionSchema, createUserSchema } from '../validation/userSchema';
 
 const validationSession =
-  (schema: typeof SessionSchema) =>
+  (schema: typeof sessionSchema) =>
   async (req: Request, res: Response, next: NextFunction) => {
     const data = req.body;
 
