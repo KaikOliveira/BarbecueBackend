@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
-
-import { CreateUserService } from '../services/CreateUserService';
-import { IUser } from '../types/UserDTO';
-import { badRequest } from '../utils/erros';
+import { CreateUserService } from 'services/CreateUserService';
+import { IUser } from 'types/UserDTO';
+import { badRequest } from 'utils/erros';
 
 async function createNewUser(req: Request, res: Response) {
   try {

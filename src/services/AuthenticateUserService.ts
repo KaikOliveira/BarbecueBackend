@@ -1,11 +1,10 @@
 import { compare } from 'bcryptjs';
+import { authConfig } from 'config/auth';
 import { Response } from 'express';
 import { sign } from 'jsonwebtoken';
-
-import { authConfig } from '../config/auth';
-import { userModel } from '../models/UserModel';
-import { ISignIn } from '../types/SessionsDTO';
-import { unauthorized } from '../utils/erros';
+import { userModel } from 'models/UserModel';
+import { ISignIn } from 'types/SessionsDTO';
+import { unauthorized } from 'utils/erros';
 
 class AuthenticateUserService {
   public async auth(data: ISignIn, res: Response) {

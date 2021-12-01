@@ -1,7 +1,6 @@
 import { hash } from 'bcryptjs';
-
-import { userModel } from '../models/UserModel';
-import { IUser } from '../types/UserDTO';
+import { userModel } from 'models/UserModel';
+import { IUser } from 'types/UserDTO';
 
 class CreateUserService {
   public async create(data: IUser): Promise<IUser | any> {

@@ -1,4 +1,4 @@
-import { dbQuery } from '../config/database';
+import { dbQuery } from 'config/database';
 
 // const createNewSchedule = async () => {
 //   await dbQuery(``)

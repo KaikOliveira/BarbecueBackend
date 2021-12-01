@@ -1,6 +1,6 @@
 import { Application, Router } from 'express';
+import { scheduleModel } from 'models/ScheduleModal';
 
-import { scheduleModel } from '../models/ScheduleModal';
 import { scheduleRouter } from './schedules.routes';
 import { sessionsRouter } from './sessions.routes';
 import { userRouter } from './users.routes';

@@ -1,10 +1,4 @@
-interface ISchedule {
-  id?: number;
-  title: string;
-  date: string;
-  priceTotal: number;
-  amountPeople?: number;
-}
+import { ISchedule } from 'types/ScheduleDTO';
 
 class CreateScheduleService {
   public async create(data: ISchedule): Promise<void> {

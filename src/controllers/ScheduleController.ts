@@ -1,7 +1,6 @@
 import { Request, Response } from 'express';
-
-import { CreateScheduleService } from '../services/CreateSchedule';
-import { badRequest } from '../utils/erros';
+import { CreateScheduleService } from 'services/CreateSchedule';
+import { badRequest } from 'utils/erros';
 
 async function createSchedule(req: Request, res: Response) {
   try {
