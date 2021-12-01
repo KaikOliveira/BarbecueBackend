@@ -1,8 +1,8 @@
 import { Router } from 'express';
+import { createSchedule } from 'Validation/scheduleSchema';
 
 import { scheduleController } from '../controllers/ScheduleController';
 import { validationCreateSchedule } from '../middlewares/schedulesMiddlewares';
-import { createSchedule } from '../validation/scheduleSchema';
 
 const scheduleRouter = Router();
 

@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-const createSchedule = yup.object().shape({
+const createScheduleSchema = yup.object().shape({
   title: yup
     .string()
     .required('Titulo é Obrigatorio!')
@@ -13,4 +13,4 @@ const createSchedule = yup.object().shape({
   amountPeople: yup.number(),
 });
 
-export { createSchedule };
+export { createScheduleSchema };

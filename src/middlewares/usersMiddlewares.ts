@@ -1,12 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response, NextFunction } from 'express';
-import * as yup from 'yup';
-import { AnyObject } from 'yup/lib/types';
+import { SessionSchema, createUserSchema } from 'Validation/userSchema';
 
 import { badRequest } from '../utils/erros';
 
 const validationSession =
-  (schema: yup.ObjectSchema<AnyObject>) =>
+  (schema: typeof SessionSchema) =>
   async (req: Request, res: Response, next: NextFunction) => {
     const data = req.body;
 
@@ -19,7 +18,7 @@ const validationSession =
   };
 
 const validationCreateUsers =
-  (schema: yup.ObjectSchema<AnyObject>) =>
+  (schema: typeof createUserSchema) =>
   async (req: Request, res: Response, next: NextFunction) => {
     const data = req.body;
 

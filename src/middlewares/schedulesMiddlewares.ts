@@ -1,10 +1,10 @@
 import { Request, Response, NextFunction } from 'express';
-import * as yup from 'yup';
+import { createScheduleSchema } from 'Validation/scheduleSchema';
 
 import { badRequest } from '../utils/erros';
 
 const validationCreateSchedule =
-  (schema: yup.ObjectSchema<any>) =>
+  (schema: typeof createScheduleSchema) =>
   async (req: Request, res: Response, next: NextFunction) => {
     const data = req.body;
 
