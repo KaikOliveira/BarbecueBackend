@@ -2,7 +2,7 @@
 import { Request, Response, NextFunction } from 'express';
 
 import { badRequest } from '../utils/erros';
-import { sessionSchema, createUserSchema } from '../validation/userSchema';
+import { sessionSchema, createUserSchema } from '../validations/userSchema';
 
 const validationSession =
   (schema: typeof sessionSchema) =>

@@ -2,7 +2,7 @@ import { Router } from 'express';
 
 import { userController } from '../controllers/UserController';
 import { validationCreateUsers } from '../middlewares/usersMiddlewares';
-import { createUserSchema } from '../validation/userSchema';
+import { createUserSchema } from '../validations/userSchema';
 
 const userRouter = Router();
 
