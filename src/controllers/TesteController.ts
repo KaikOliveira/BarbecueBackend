@@ -8,13 +8,13 @@ async function createSchedule(req: Request, res: Response) {
 
     const createSchedule = new CreateScheduleService();
 
-    await createSchedule.create(data);
-    res.send('dsf');
+    const b = await createSchedule.create(data);
+    return res.json(b);
   } catch (err) {
     return badRequest(res, err);
   }
 }
 
-export const scheduleController = {
+export const testeController = {
   createSchedule,
 };

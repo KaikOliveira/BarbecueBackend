@@ -1,14 +1,13 @@
-import { scheduleController } from 'controllers/ScheduleController';
+/* import { testeController } from "controllers/TesteController"
 import { Router } from 'express';
-import { validationCreateSchedule } from 'middlewares/schedulesMiddlewares';
-import { createScheduleSchema } from 'validations/scheduleSchema';
+//import { validationCreateSchedule } from 'middlewares/schedulesMiddlewares';
+//import { createScheduleSchema } from 'validations/scheduleSchema';
 
 const scheduleRouter = Router();
 
 scheduleRouter.post(
-  '/create',
-  validationCreateSchedule(createScheduleSchema),
-  scheduleController.createSchedule,
+  '/create', testeController.createSchedule,
 );
 
 export { scheduleRouter };
+ */
