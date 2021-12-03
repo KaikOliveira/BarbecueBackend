@@ -3,7 +3,7 @@ import { ISchedule } from '../types/ScheduleDTO';
 
 const createNewSchedule = async (data: ISchedule) => {
   const resp = await dbQuery(
-    `INSERT INTO schedule (title, date, priceTotal, amountPeople) values (?, ?, ?, ?)`,
+    `INSERT INTO schedules (title, date, priceTotal, amountPeople) values (?, ?, ?, ?)`,
     [data.title, data.date, data.priceTotal, data.amountPeople],
   );
   return resp;
