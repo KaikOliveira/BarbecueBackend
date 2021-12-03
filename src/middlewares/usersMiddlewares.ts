@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Request, Response, NextFunction } from 'express';
-import { badRequest } from 'utils/erros';
-import { sessionSchema, createUserSchema } from 'validations/userSchema';
+
+import { badRequest } from '../utils/erros';
+import { sessionSchema, createUserSchema } from '../validations/userSchema';
 
 const validationSession =
   (schema: typeof sessionSchema) =>

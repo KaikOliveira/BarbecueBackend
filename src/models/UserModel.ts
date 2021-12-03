@@ -1,5 +1,5 @@
-import { dbQuery } from 'config/database';
-import { IUser } from 'types/UserDTO';
+import { dbQuery } from '../config/database';
+import { IUser } from '../types/UserDTO';
 
 const insertUser = async (user: IUser) => {
   await dbQuery(`INSERT INTO users (user, name, password) values(?,?,?)`, [

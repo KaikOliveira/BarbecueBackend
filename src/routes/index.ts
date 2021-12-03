@@ -1,6 +1,6 @@
 import { Application, Router } from 'express';
 
-//import { scheduleRouter } from './schedules.routes';
+import { scheduleRouter } from './schedules.routes';
 import { sessionsRouter } from './sessions.routes';
 import { userRouter } from './users.routes';
 
@@ -11,7 +11,7 @@ export function useRoutes(app: Application) {
 
   apiRouter.use('/sessions', sessionsRouter);
 
-  //apiRouter.use('/schedules', scheduleRouter);
+  apiRouter.use('/schedules', scheduleRouter);
 
   app.use('/', apiRouter);
 }

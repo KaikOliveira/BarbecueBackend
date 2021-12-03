@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { CreateScheduleService } from 'services/CreateSchedule';
-import { badRequest } from 'utils/erros';
+
+import { badRequest } from '../utils/erros';
 
 async function createSchedule(req: Request, res: Response) {
   try {
@@ -15,6 +15,6 @@ async function createSchedule(req: Request, res: Response) {
   }
 }
 
-export const testeController = {
+export const scheduleController = {
   createSchedule,
 };

@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
-import { badRequest } from 'utils/erros';
-import { createScheduleSchema } from 'validations/scheduleSchema';
+
+import { badRequest } from '../utils/erros';
+import { createScheduleSchema } from '../validations/scheduleSchema';
 
 const validationCreateSchedule =
   (schema: typeof createScheduleSchema) =>

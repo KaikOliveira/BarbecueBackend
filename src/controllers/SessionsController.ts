@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
-import { AuthenticateUserService } from 'services/AuthenticateUserService';
-import { badRequest } from 'utils/erros';
+
+import { AuthenticateUserService } from '../services/AuthenticateUserService';
+import { badRequest } from '../utils/erros';
 
 async function signIn(req: Request, res: Response) {
   try {
