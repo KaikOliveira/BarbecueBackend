@@ -9,8 +9,8 @@ async function createSchedule(req: Request, res: Response) {
 
     const createSchedule = new CreateScheduleService();
 
-    const b = await createSchedule.create(data);
-    return res.json(b);
+    const rsp = await createSchedule.create(data);
+    return res.json(rsp);
   } catch (err) {
     return badRequest(res, err);
   }

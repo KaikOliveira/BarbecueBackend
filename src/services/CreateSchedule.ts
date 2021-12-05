@@ -15,8 +15,8 @@ class CreateScheduleService {
       amountPeople: data.amountPeople !== undefined ? data.amountPeople : 0,
     };
 
-    const a = await scheduleModel.createNewSchedule(obj);
-    return a;
+    const rsp = await scheduleModel.createNewSchedule(obj);
+    return rsp;
   }
 }
 
