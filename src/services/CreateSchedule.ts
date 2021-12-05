@@ -7,9 +7,15 @@ class CreateScheduleService {
   public async create(data: ISchedule): Promise<ISchedule | any> {
     const hashId = await hash(data.title, 8);
 
-    // const
+    const obj = {
+      id: hashId,
+      title: data.title,
+      date: data.date,
+      priceTotal: data.priceTotal !== undefined ? data.priceTotal : 0,
+      amountPeople: data.amountPeople !== undefined ? data.amountPeople : 0,
+    };
 
-    const a = await scheduleModel.createNewSchedule(data);
+    const a = await scheduleModel.createNewSchedule(obj);
     return a;
   }
 }

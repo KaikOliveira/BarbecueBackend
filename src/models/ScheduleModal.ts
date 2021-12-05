@@ -2,12 +2,12 @@ import { dbQuery } from '../config/database';
 import { ISchedule } from '../types/ScheduleDTO';
 
 const createNewSchedule = async (data: ISchedule) => {
-  const resp = await dbQuery(
-    `INSERT INTO schedules (title, date, priceTotal, amountPeople) values (?, ?, ?, ?)`,
-    [data.title, data.date, data.priceTotal, data.amountPeople],
+  await dbQuery(
+    `INSERT INTO schedules (id, title, date, priceTotal, amountPeople) values (?, ?, ?, ?, ?)`,
+    [data.id, data.title, data.date, data.priceTotal, data.amountPeople],
   );
-  return resp;
-  // const resp = await(`SELECT * from schedule WHERE`)
+  const resp = await dbQuery(`SELECT * from schedules WHERE id = ?`, [data.id]);
+  return resp[0];
 };
 
 const listParticipantsOfSchedule = async (id: number) => {

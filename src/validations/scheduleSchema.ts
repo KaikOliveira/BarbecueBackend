@@ -8,8 +8,8 @@ const createScheduleSchema = yup.object().shape({
   date: yup
     .string()
     .required('Data é Obrigatorio!')
-    .min(4, 'Senha Minimo 6 caracteres!'),
-  priceTotal: yup.number().required('Valor Total é Obrigatorio!'),
+    .min(4, 'Data Minimo 4 caracteres!'),
+  priceTotal: yup.number(),
   amountPeople: yup.number(),
 });
 

@@ -1,7 +1,7 @@
 export interface ISchedule {
-  id?: number;
+  id?: string;
   title: string;
   date: string;
-  priceTotal: number;
+  priceTotal?: number;
   amountPeople?: number;
 }
