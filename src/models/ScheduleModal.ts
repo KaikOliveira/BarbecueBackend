@@ -3,8 +3,15 @@ import { ISchedule } from '../types/ScheduleDTO';
 
 const createNewSchedule = async (data: ISchedule) => {
   await dbQuery(
-    `INSERT INTO schedules (id, title, date, priceTotal, amountPeople) values (?, ?, ?, ?, ?)`,
-    [data.id, data.title, data.date, data.priceTotal, data.amountPeople],
+    `INSERT INTO schedules (id, idUser, title, date, priceTotal, amountPeople) values (?, ?, ?, ?, ?, ?)`,
+    [
+      data.id,
+      data.idUser,
+      data.title,
+      data.date,
+      data.priceTotal,
+      data.amountPeople,
+    ],
   );
   const resp = await dbQuery(`SELECT * from schedules WHERE id = ?`, [data.id]);
   return resp[0];
