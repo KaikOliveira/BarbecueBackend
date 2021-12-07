@@ -12,4 +12,8 @@ userRouter.post(
   userController.createNewUser,
 );
 
+userRouter.get('/list_all',
+  //return resp.json({ message: "Hello world" });
+);
+
 export { userRouter };

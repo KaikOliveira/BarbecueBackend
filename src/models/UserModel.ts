@@ -19,6 +19,10 @@ const checkUserExists = async (user: string) => {
   return check[0];
 };
 
+const listAllUser = async (user: string) => {
+  const listAll = await dbQuery(`SELECT * from users`);
+};
+
 export const userModel = {
   insertUser,
   checkUserExists,
