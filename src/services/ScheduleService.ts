@@ -5,7 +5,7 @@ import { authConfig } from '../config/auth';
 import { scheduleModel } from '../models/ScheduleModal';
 import { ISchedule } from '../types/ScheduleDTO';
 
-class CreateScheduleService {
+class ScheduleService {
   public async create(data: ISchedule, auth: string): Promise<ISchedule | any> {
     const hashId = await hash(data.title, 8);
     const hashJwt = auth.replace('Bearer ', '');
@@ -24,6 +24,16 @@ class CreateScheduleService {
     const rsp = await scheduleModel.createNewSchedule(obj);
     return rsp;
   }
+
+  public async listAll(auth: string) {
+    const hashJwt = auth.replace('Bearer ', '');
+
+    const decoded = verify(hashJwt, authConfig.jwt.secret);
+
+    const rsp = await scheduleModel.listAllSchedules(Number(decoded.sub));
+
+    return rsp;
+  }
 }
 
-export { CreateScheduleService };
+export { ScheduleService };

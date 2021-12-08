@@ -12,4 +12,6 @@ scheduleRouter.post(
   scheduleController.createSchedule,
 );
 
+scheduleRouter.get('/all', scheduleController.listAllSchedule);
+
 export { scheduleRouter };
