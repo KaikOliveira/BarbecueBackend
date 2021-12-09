@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { verify } from 'jsonwebtoken';
 
 import { ScheduleService } from '../services/ScheduleService';
 import { badRequest } from '../utils/erros';
@@ -37,6 +36,18 @@ async function listAllSchedule(req: Request, res: Response) {
     badRequest(res, 'Invalid Token');
   } catch (err) {
     return badRequest(res, err);
+  }
+}
+
+async function showSchedule(req: Request, res: Response) {
+  try {
+    const { id } = req.params;
+
+    const scheduleService = new ScheduleService();
+
+    // scheduleService.
+  } catch (err) {
+    console.log('sdf');
   }
 }
 

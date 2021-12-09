@@ -17,7 +17,7 @@ const createNewSchedule = async (data: ISchedule) => {
   return resp[0];
 };
 
-const listParticipantsOfSchedule = async (id: number) => {
+const listParticipantsOfSchedule = async (id: string) => {
   const listAll = await dbQuery(
     `SELECT * from participants WHERE id_schedule = ?`,
     [id],
@@ -25,6 +25,8 @@ const listParticipantsOfSchedule = async (id: number) => {
 
   return listAll;
 };
+
+// const showSchedule = async (id)
 
 const listAllSchedules = async (id: number) => {
   const listAll = await dbQuery(`SELECT * from schedules WHERE idUser = ?`, [

@@ -34,6 +34,10 @@ class ScheduleService {
 
     return rsp;
   }
+
+  public async show(id: string) {
+    const rsp = await scheduleModel.listParticipantsOfSchedule(id);
+  }
 }
 
 export { ScheduleService };
