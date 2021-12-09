@@ -35,8 +35,34 @@ class ScheduleService {
     return rsp;
   }
 
-  public async show(id: string) {
-    const rsp = await scheduleModel.listParticipantsOfSchedule(id);
+  public async show(idSchedule: string, idUser: string) {
+    const hashJwt = idUser.replace('Bearer ', '');
+
+    const decoded = verify(hashJwt, authConfig.jwt.secret);
+
+    const rsp = await scheduleModel.showSchedule(
+      idSchedule,
+      Number(decoded.sub),
+    );
+
+    if (rsp.length > 0) {
+      const arrOfParticipants = await scheduleModel.listParticipantsOfSchedule(
+        idSchedule,
+      );
+
+      const data = {
+        id: rsp[0].id,
+        title: rsp[0].title,
+        date: rsp[0].date,
+        priceTotal: rsp[0].princeTotal,
+        amountPeople: rsp[0].amountPeople,
+        participants: arrOfParticipants,
+      };
+
+      return data;
+    }
+
+    return;
   }
 }
 

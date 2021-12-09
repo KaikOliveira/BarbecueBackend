@@ -26,7 +26,14 @@ const listParticipantsOfSchedule = async (id: string) => {
   return listAll;
 };
 
-// const showSchedule = async (id)
+const showSchedule = async (idSchedule: string, idUser: number) => {
+  const rsp = await dbQuery(
+    `SELECT * FROM schedules WHERE idUser = ? AND id = ?`,
+    [idUser, idSchedule],
+  );
+
+  return rsp;
+};
 
 const listAllSchedules = async (id: number) => {
   const listAll = await dbQuery(`SELECT * from schedules WHERE idUser = ?`, [
@@ -39,4 +46,5 @@ export const scheduleModel = {
   listParticipantsOfSchedule,
   createNewSchedule,
   listAllSchedules,
+  showSchedule,
 };

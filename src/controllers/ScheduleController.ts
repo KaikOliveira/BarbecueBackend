@@ -42,10 +42,20 @@ async function listAllSchedule(req: Request, res: Response) {
 async function showSchedule(req: Request, res: Response) {
   try {
     const { id } = req.params;
+    const auth = req.headers.authorization;
 
     const scheduleService = new ScheduleService();
 
-    // scheduleService.
+    if (auth) {
+      const rsp = await scheduleService.show(id, auth);
+
+      if (!rsp) {
+        return res.status(404).json({ Error: 'Not found' });
+      }
+
+      return res.json(rsp);
+    }
+    badRequest(res, 'No Token');
   } catch (err) {
     console.log('sdf');
   }
@@ -54,4 +64,5 @@ async function showSchedule(req: Request, res: Response) {
 export const scheduleController = {
   createSchedule,
   listAllSchedule,
+  showSchedule,
 };
