@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
 import { ScheduleService } from '../services/ScheduleService';
-import { badRequest } from '../utils/erros';
+import { badRequest, unauthorized } from '../utils/erros';
 
 async function createSchedule(req: Request, res: Response) {
   try {
@@ -12,6 +12,10 @@ async function createSchedule(req: Request, res: Response) {
 
     if (auth) {
       const rsp = await createSchedule.create(data, auth);
+
+      if (rsp === false) {
+        return unauthorized(res, 'Cada usuario so pode ter 3 agendas');
+      }
 
       return res.json(rsp);
     }

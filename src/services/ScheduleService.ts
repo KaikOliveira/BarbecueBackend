@@ -21,6 +21,14 @@ class ScheduleService {
       amountPeople: data.amountPeople !== undefined ? data.amountPeople : 0,
     };
 
+    const verifyQuantities = await scheduleModel.listAllSchedules(
+      Number(decoded.sub),
+    );
+
+    if (verifyQuantities.length > 2) {
+      return false;
+    }
+
     const rsp = await scheduleModel.createNewSchedule(obj);
     return rsp;
   }
