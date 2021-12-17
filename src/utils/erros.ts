@@ -4,7 +4,7 @@ export function badRequest(res: Response, err: any) {
   res.status(400).json({ Error: err.message });
 }
 
-export function internalServerError(res: Response, err: Error) {
+export function internalServerError(res: Response, err: any) {
   res.status(500).json({
     Error: err.message,
   });

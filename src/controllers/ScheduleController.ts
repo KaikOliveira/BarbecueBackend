@@ -1,7 +1,7 @@
 import { Request, Response } from 'express';
 
 import { ScheduleService } from '../services/ScheduleService';
-import { badRequest, unauthorized } from '../utils/erros';
+import { unauthorized, internalServerError } from '../utils/erros';
 
 async function createSchedule(req: Request, res: Response) {
   try {
@@ -19,9 +19,9 @@ async function createSchedule(req: Request, res: Response) {
 
       return res.json(rsp);
     }
-    badRequest(res, 'Invalid Token');
+    unauthorized(res, 'Invalid Token');
   } catch (err) {
-    return badRequest(res, err);
+    return internalServerError(res, err);
   }
 }
 
@@ -37,9 +37,9 @@ async function listAllSchedule(req: Request, res: Response) {
       return res.json(rsp);
     }
 
-    badRequest(res, 'Invalid Token');
+    unauthorized(res, 'Invalid Token');
   } catch (err) {
-    return badRequest(res, err);
+    return internalServerError(res, err);
   }
 }
 
@@ -59,9 +59,9 @@ async function showSchedule(req: Request, res: Response) {
 
       return res.json(rsp);
     }
-    badRequest(res, 'No Token');
+    unauthorized(res, 'No Token');
   } catch (err) {
-    console.log('sdf');
+    return internalServerError(res, err);
   }
 }
 
